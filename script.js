@@ -108,14 +108,14 @@ function subscribeAll() {
         attendanceData = {};
         snap.forEach(d => { attendanceData[d.id] = d.data() || {}; });
         render();
-    });
+    }, e => console.error('Firestore read absensi gagal:', e.code || e.message));
 
     // jadwal custom per jenjang+hari
     db.collection('jadwal').onSnapshot(snap => {
         scheduleCache = {};
         snap.forEach(d => { scheduleCache[d.id] = (d.data() || {}).items || []; });
         render();
-    });
+    }, e => console.error('Firestore read jadwal gagal:', e.code || e.message));
 
     // username custom
     ref('settings', 'usernames').onSnapshot(snap => {
@@ -519,12 +519,22 @@ function toggleStatus(teacherName, status, session, sessions, guruName) {
 // 6b. AUTO-SAVE (debounce) KE FIRESTORE
 // ============================================================
 let saveTimer = null;
+let lastWriteErrorAt = 0;
+function writeError(e, action) {
+    const code = e && (e.code || e.message) ? (e.code || e.message) : 'unknown';
+    const now = Date.now();
+    if (now - lastWriteErrorAt > 15000) {
+        lastWriteErrorAt = now;
+        alert(`Gagal ${action} ke cloud: ${code}\nPastikan Firestore Rules sudah di-publish dan domain ini ada di Authentication > Authorized domains.`);
+    }
+    console.error('Firestore ' + action + ' gagal:', code, e);
+}
 function queueSave() {
     if (saveTimer) clearTimeout(saveTimer);
     const d = currentDate;
     saveTimer = setTimeout(() => {
         saveTimer = null;
-        ref('absensi', d).set(attendanceData[d] || {}).catch(() => alert('Gagal menyimpan ke cloud. Cek koneksi internet.'));
+        ref('absensi', d).set(attendanceData[d] || {}).catch(e => writeError(e, 'menyimpan'));
     }, 600);
 }
 
@@ -534,7 +544,7 @@ function queueSave() {
 function saveAttendance() {
     if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
     const todayData = attendanceData[currentDate] || {};
-    ref('absensi', currentDate).set(todayData).catch(() => alert('Gagal menyimpan ke cloud. Cek koneksi internet.'));
+    ref('absensi', currentDate).set(todayData).catch(e => writeError(e, 'menyimpan'));
     isDirty = false;
     // Feedback visual
     const btn = document.getElementById('saveBtnText');
