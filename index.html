@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Absensi Guru - MID & MTSD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: false,
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#FBF3EB',
+                            100: '#F3E9D8',
+                            200: '#E7D3B8',
+                            300: '#D9B893',
+                            400: '#C88E5F',
+                            500: '#C56A3C',
+                            600: '#A3542B',
+                            700: '#8A4522',
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="manifest" href="data:application/json;base64,eyJ0aGVtZV9jb2xvciI6IiNDNTZBM0MiLCJuYW1lIjoiQWJzZW5zaSBHdXJ1IiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJzaG9ydF9uYW1lIjoiQWJzZW5zaSIsImJhY2tncm91bmRfY29sb3IiOiIjRkFGM0VBIiwic3RhcnRfdXJsIjoiLiIsImljb25zIjpbeyJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCIsInNpemVzIjoiMTkyeDE5MiIsInNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQXhNREFnTVRBd0lqNDhjbVZqZENCM2FXUjBhRDBpTVRBd0lpQm9aV2xuYUhROUlqRXdNQ0lnY25nOUlqSXdJaUJtYVd4c1BTSWpRelUyUVRORElpOCtQSFJsZUhRZ2VEMGlOVEFpSUhrOUlqWTRJaUJtYjI1MExYTnBlbVU5SWpZd0lpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJaUJtYVd4c1BTSjNhR2wwWlNJZ1ptOXVkQzFtWVcxcGJIazlJbk5oYm5NdGMyVnlhV1lpUGk4OEwzUmxlSFErUEM5emRtYysifSx7InR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiI1MTJ4NTEyIiwic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeE1EQWdNVEF3SWo0OGNtVmpkQ0IzYVdSMGFEMGlNVEF3SWlCb1pXbG5hSFE5SWpFd01DSWdjbmc5SWpJd0lpQm1hV3hzUFNJalF6VTJRVE5ESWk4K1BIUmxlSFFnZUQwaU5UQWlJSGs5SWpZNElpQm1iMjUwTFhOcGVtVTlJall3SWlCMFpYaDBMV0Z1WTJodmNqMGliV2xrWkd4bElpQm1hV3hzUFNKM2FHbDBaU0lnWm05dWRDMW1ZVzFwYkhrOUluTmhibk10YzJWeWFXWWlQaTg4TDNSbGVIUStQQzl6ZG1jKyJ9XX0=" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-['DM_Sans']">
+
+<!-- SPRITE ICONS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+</svg>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-sm">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold mb-1" style="font-family:'Poppins',sans-serif; color:#111827;">Absensi Guru</h1>
+            <p class="text-sm text-slate-500">MID & MTSD</p>
+        </div>
+        <div id="guruLoginForm" class="space-y-4">
+            <input type="text" id="usernameInput" placeholder="Username" autocomplete="off" aria-label="Username"
+                   class="w-full border-2 border-blue-200 rounded-2xl px-4 py-3 text-base outline-none focus:border-blue-500 transition"
+                   style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">
+            <button onclick="doLogin()" id="btnLogin" class="w-full text-white font-semibold py-3.5 rounded-2xl text-base transition" style="background:#C56A3C; box-shadow: 0 4px 14px rgba(197,106,60,0.4); font-family:'DM Sans',sans-serif;">
+                Masuk Dashboard
+            </button>
+        </div>
+        <p id="loginError" style="display:none;"></p>
+        <div id="adminLoginBox" style="display:none;" class="space-y-3 mt-4">
+            <input type="email" id="adminEmail" placeholder="Email admin" autocomplete="email" aria-label="Email admin"
+                   class="w-full border-2 border-blue-200 rounded-2xl px-4 py-3 text-base outline-none focus:border-blue-500 transition"
+                   style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">
+            <input type="password" id="adminPass" placeholder="Password admin" autocomplete="current-password" aria-label="Password admin"
+                   class="w-full border-2 border-blue-200 rounded-2xl px-4 py-3 text-base outline-none focus:border-blue-500 transition"
+                   style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">
+            <button onclick="doAdminLogin()" class="w-full text-white font-semibold py-3.5 rounded-2xl text-sm transition" style="background:#A3542B; box-shadow: 0 4px 14px rgba(197,106,60,0.4); font-family:'DM Sans',sans-serif;">
+                Masuk Admin
+            </button>
+            <button onclick="batalAdminLogin()" class="w-full bg-white text-slate-600 font-semibold py-3 rounded-2xl text-sm transition border border-slate-200 hover:border-blue-300" style="font-family:'DM Sans',sans-serif;">Batal</button>
+        </div>
+        <p class="text-xs text-center text-slate-500 mt-4">
+            <button id="toggleAdminLogin" onclick="toggleAdminLogin()" class="text-blue-700 font-semibold underline underline-offset-2">Login Admin email/password</button>
+            <br>1-6 (MID) · mtsd · admin
+        </p>
+    </div>
+</div>
+
+<!-- DASHBOARD SCREEN -->
+<div id="dashboardScreen" class="max-w-lg mx-auto px-4 py-5 pb-24" style="display:none;">
+
+    <div class="flex justify-between items-start gap-2 flex-wrap mb-6">
+        <div>
+            <h1 class="text-xl font-bold" style="font-family:'Poppins',sans-serif; color:#111827;">Absensi</h1>
+            <div class="flex items-center gap-2">
+                <p class="text-xs text-slate-500 mt-1" id="displayDate">Memuat...</p>
+                <button onclick="goToToday()" id="goTodayBtn" style="display:none; box-shadow: 0 2px 8px rgba(197,106,60,0.12);" class="text-xs font-semibold px-2.5 py-1 rounded-lg border border-blue-300 bg-white text-blue-600 hover:bg-blue-50 transition">Hari Ini</button>
+            </div>
+        </div>
+        <div class="flex gap-2 flex-wrap justify-end">
+            <button onclick="openRecap()" class="border border-slate-200 p-2.5 rounded-xl hover:border-blue-300 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);" aria-label="Rekap">
+                <svg class="w-4 h-4"><use href="#i-calendar"/></svg>
+            </button>
+            <button id="btnSettings" onclick="openSettings()" class="border border-slate-200 p-2.5 rounded-xl hover:border-blue-300 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);" aria-label="Pengaturan">
+                <svg class="w-4 h-4"><use href="#i-settings"/></svg>
+            </button>
+            <button onclick="bukaLaporanWhatsApp()" class="border border-slate-200 p-2.5 rounded-xl hover:border-blue-300 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);" aria-label="Kirim laporan WhatsApp">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </button>
+            <button onclick="doLogout()" class="border border-slate-200 text-slate-600 px-3 py-2 rounded-xl text-sm hover:border-blue-300 hover:text-blue-600 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">
+                Keluar
+            </button>
+        </div>
+    </div>
+
+    <div id="tabBar" class="flex gap-2 mb-4 p-1.5 rounded-2xl" style="background:#F3E9D8; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+        <button id="tabMID" class="tab-btn active flex-1" onclick="switchTab('MID')">MID</button>
+        <button id="tabMTSD" class="tab-btn inactive flex-1" onclick="switchTab('MTSD')">MTSD</button>
+    </div>
+
+    <div id="daySelector" class="flex gap-1.5 mb-4"></div>
+
+    <div id="gradeSelector" class="flex flex-wrap gap-2 mb-2 justify-center p-2 rounded-2xl" style="background:#F5EDE2; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
+        <button class="grade-btn active" data-grade="1" onclick="selectGrade(1)">1</button>
+        <button class="grade-btn" data-grade="2" onclick="selectGrade(2)">2</button>
+        <button class="grade-btn" data-grade="3" onclick="selectGrade(3)">3</button>
+        <button class="grade-btn" data-grade="4" onclick="selectGrade(4)">4</button>
+        <button class="grade-btn" data-grade="5" onclick="selectGrade(5)">5</button>
+        <button class="grade-btn" data-grade="6" onclick="selectGrade(6)">6</button>
+    </div>
+    <div id="statusLegend" class="flex items-center justify-center gap-4 mb-4 text-xs font-medium text-slate-600">
+        <span class="flex items-center gap-1.5"><span class="status-dot dot-h"></span>Hadir</span>
+        <span class="flex items-center gap-1.5"><span class="status-dot dot-i"></span>Izin</span>
+        <span class="flex items-center gap-1.5"><span class="status-dot dot-a"></span>Alpha</span>
+    </div>
+
+    <div id="teacherListContainer"></div>
+
+    <div class="fixed bottom-3 left-0 right-0 max-w-lg mx-auto z-40">
+        <button onclick="saveAttendance()" class="w-full text-white font-bold py-4 rounded-2xl text-sm transition hover:brightness-110" style="background:#C56A3C; box-shadow: 0 8px 24px rgba(197,106,60,0.3); font-family:'DM Sans',sans-serif;">
+            <span id="saveBtnText">Simpan Absensi</span>
+        </button>
+    </div>
+</div>
+
+<!-- SETTINGS SCREEN -->
+<div id="settingsScreen" class="max-w-2xl mx-auto px-4 py-5 pb-24" style="display:none;">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold" style="font-family:'Poppins',sans-serif; color:#111827;">Pengaturan Jadwal</h2>
+        <button onclick="closeSettings()" class="border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-sm hover:border-blue-300 hover:text-blue-600 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">Tutup</button>
+    </div>
+
+    <div id="settingsJenjang" class="flex flex-wrap gap-2 mb-3 justify-center p-2 rounded-2xl" style="background:#F5EDE2; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);"></div>
+    <div id="settingsDay" class="flex gap-1.5 mb-4 p-2 rounded-2xl" style="background:#F5EDE2; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);"></div>
+    <div id="settingsList" class="mb-4"></div>
+    <div id="settingsUsernameSection" class="mb-4" style="display:none;">
+        <h3 class="text-sm font-bold text-slate-700 mb-2">Username per Jenjang</h3>
+        <p class="text-xs text-slate-500 mb-2">Hanya admin yang bisa melihat dan mengubah ini. Input yang kosong akan tetap memakai username default.</p>
+        <div id="settingsUsernameList" class="flex flex-col gap-2"></div>
+        <button onclick="saveAllUsernames()" class="w-full text-white font-semibold py-3 rounded-2xl text-sm transition mt-2 hover:brightness-110" style="background:#C56A3C; box-shadow: 0 4px 14px rgba(197,106,60,0.4); font-family:'DM Sans',sans-serif;">Simpan Username</button>
+        <button onclick="resetAllUsernames()" class="w-full bg-white text-slate-700 font-semibold py-3 rounded-2xl text-sm transition mt-2 border border-slate-200 hover:border-blue-300 hover:text-blue-600" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12); font-family:'DM Sans',sans-serif;">Reset Semua ke Default</button>
+    </div>
+
+    <div id="settingsHijriSection" style="display:none;">
+        <h3 class="text-sm font-bold text-slate-700 mb-1">Kalender Hijriah</h3>
+        <p class="text-xs text-slate-500 mb-2">Atur sendiri jumlah hari tiap bulan hijriah (29/30). Isi patokan tanggal hari ini supaya perhitungan akurat.</p>
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-3 mb-3">
+            <label for="hijriAnchorGreg" class="block text-xs font-semibold text-gray-500 mb-1">Tanggal hari ini (Masehi)</label>
+            <input type="date" id="hijriAnchorGreg" class="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm">
+            <label class="block text-xs font-semibold text-gray-500 mb-1 mt-2">Tanggal hari ini (Hijri)</label>
+            <div class="grid grid-cols-4 gap-2">
+                <input type="number" id="hijriAnchorD" min="1" max="30" class="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm" placeholder="Tgl">
+                <select id="hijriAnchorM" class="col-span-2 w-full border border-gray-200 rounded-lg px-2 py-2 text-sm"></select>
+                <input type="number" id="hijriAnchorY" min="1300" max="1500" class="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm" placeholder="Tahun H">
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mb-3" id="settingsHijriLengths"></div>
+        <button onclick="saveHijriSettings()" class="w-full text-white font-semibold py-3 rounded-2xl text-sm transition mt-2 hover:brightness-110" style="background:#C56A3C; box-shadow: 0 4px 14px rgba(197,106,60,0.4); font-family:'DM Sans',sans-serif;">Simpan Kalender Hijriah</button>
+        <button onclick="resetHijriSettings()" class="w-full bg-white text-slate-700 font-semibold py-3 rounded-2xl text-sm transition mt-2 border border-slate-200 hover:border-blue-300 hover:text-blue-600" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12); font-family:'DM Sans',sans-serif;">Reset ke Perhitungan Bawaan</button>
+    </div>
+
+    <div class="fixed bottom-3 left-0 right-0 max-w-2xl mx-auto z-40">
+        <button onclick="addNewRow()" class="w-full text-white font-bold py-4 rounded-2xl text-sm transition hover:brightness-110" style="background:#C56A3C; box-shadow: 0 8px 24px rgba(197,106,60,0.3); font-family:'DM Sans',sans-serif;">+ Tambah Jadwal</button>
+    </div>
+</div>
+
+<!-- RECAP SCREEN -->
+<div id="recapScreen" class="max-w-lg mx-auto px-4 py-5 pb-24" style="display:none;">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold" style="font-family:'Poppins',sans-serif; color:#111827;">Rekap Bulanan</h2>
+        <button onclick="closeRecap()" class="border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-sm hover:border-blue-300 hover:text-blue-600 transition" style="box-shadow: 0 2px 8px rgba(197,106,60,0.12);">Tutup</button>
+    </div>
+    <div class="flex justify-between items-center gap-3 mb-4 p-2 rounded-2xl" style="background:#F5EDE2; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
+        <button onclick="shiftRecapMonth(-1)" class="grade-btn px-4 py-2 text-base" style="border-radius: 14px;">&lsaquo;</button>
+        <div class="text-center">
+            <div id="recapMonthLabel" class="font-bold text-lg" style="font-family:'Poppins',sans-serif; color:#111827;">-</div>
+            <div class="text-xs text-slate-500">kalender Hijriah</div>
+        </div>
+        <button onclick="shiftRecapMonth(1)" class="grade-btn px-4 py-2 text-base" style="border-radius: 14px;">&rsaquo;</button>
+    </div>
+    <div id="recapList" class="mb-4 overflow-x-auto"></div>
+    <div class="fixed bottom-3 left-0 right-0 max-w-lg mx-auto z-40">
+        <button onclick="exportRecapCSV()" class="w-full text-white font-bold py-4 rounded-2xl text-sm transition hover:brightness-110" style="background:#C56A3C; box-shadow: 0 8px 24px rgba(197,106,60,0.3); font-family:'DM Sans',sans-serif;">Export CSV</button>
+    </div>
+</div>
+
+<!-- MODAL KIRIM LAPORAN WA -->
+<div id="modalKirimLaporan" style="display:none; position:fixed; inset:0; background:rgba(64,44,26,0.5); z-index:999; align-items:center; justify-content:center;">
+    <div class="bg-white rounded-3xl" style="width:min(360px, 92vw); margin:0; box-shadow: 0 20px 60px rgba(197,106,60,0.25); border: 1px solid rgba(197,106,60,0.15);">
+      <h3 style="margin-bottom:6px; font-family:'Poppins',sans-serif; color:#111827;"><i class="fab fa-whatsapp"></i> Kirim Laporan ke</h3>
+      <p style="font-size:13px; color:#6B5D4F; margin-bottom:12px;">Centang nomor tujuan. Setiap nomor yang dicentang akan dibuka di WhatsApp.</p>
+      <div id="waPickList" style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px; max-height:50vh; overflow-y:auto;"></div>
+      <button class="w-full text-white font-semibold py-3.5 rounded-2xl text-sm transition hover:brightness-110" id="btnWaNext" style="font-size:14px; padding:13px; background:#C56A3C; box-shadow: 0 4px 14px rgba(197,106,60,0.4); font-family:'DM Sans',sans-serif;"></button>
+      <button class="w-full text-slate-600 font-semibold py-3 rounded-2xl text-sm transition mt-2 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:text-blue-600" id="btnWaBatal" style="font-family:'DM Sans',sans-serif;">Batal</button>
+    </div>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

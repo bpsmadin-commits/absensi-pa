@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+    --clay-primary: #C56A3C;
+    --clay-primary-dark: #A3542B;
+    --clay-secondary: #F3E9D8;
+    --clay-secondary-deep: #EFE0C8;
+    --clay-success: #16A34A;
+    --clay-warning: #EAB308;
+    --clay-danger: #DC2626;
+    --clay-surface: #FFFFFF;
+    --clay-text: #111827;
+    --clay-text-light: #6B5D4F;
+    --clay-border: rgba(120, 80, 40, 0.12);
+    --clay-shadow-1: 0 2px 8px rgba(197, 106, 60, 0.10);
+    --clay-shadow-2: 0 8px 24px rgba(197, 106, 60, 0.16);
+    --clay-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --clay-radius-sm: 8px;
+    --clay-radius: 12px;
+    --clay-radius-lg: 16px;
+    --clay-radius-xl: 24px;
+    --clay-font: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --clay-font-display: 'DM Serif Display', var(--clay-font);
+    --clay-font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--clay-font);
+    background: linear-gradient(135deg, #FAF3EA 0%, #F7EEDF 50%, #F1E4CE 100%);
+    padding-bottom: 120px;
+    color: var(--clay-text);
+    min-height: 100vh;
+}
+
+/* Headline editorial pakai serif display */
+#loginScreen h1,
+#dashboardScreen h1,
+#settingsScreen h2,
+#recapScreen h2,
+#modalKirimLaporan h3 {
+    font-family: var(--clay-font-display) !important;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Label teknis pakai mono */
+#displayDate,
+#recapMonthLabel,
+#teacherListContainer .grid.items-center.mb-1 > div:last-child,
+.settings-table thead th {
+    font-family: var(--clay-font-mono) !important;
+}
+
+/* ===== LOGIN ===== */
+#loginScreen {
+    background:
+        radial-gradient(1200px 500px at 85% -10%, rgba(197, 106, 60, 0.14), transparent 60%),
+        radial-gradient(900px 400px at -10% 110%, rgba(197, 106, 60, 0.10), transparent 55%),
+        linear-gradient(135deg, #F7EEDF 0%, #F1E4CE 100%);
+}
+#loginScreen h1 {
+    color: var(--clay-text);
+    font-size: 2.25rem;
+    line-height: 1.1;
+}
+#loginScreen input {
+    border-radius: var(--clay-radius);
+    border: 2px solid rgba(197, 106, 60, 0.18);
+    background: var(--clay-surface);
+    box-shadow: var(--clay-shadow-1);
+    transition: all 0.2s ease;
+}
+#loginScreen input:focus {
+    border-color: var(--clay-primary);
+    box-shadow: 0 0 0 4px rgba(197, 106, 60, 0.15);
+}
+
+/* ===== CARDS (kertas) ===== */
+.card-teacher {
+    background: var(--clay-surface);
+    border-radius: var(--clay-radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--clay-border);
+    box-shadow: 0 2px 4px rgba(120, 80, 40, 0.05), var(--clay-shadow-1);
+}
+
+/* ===== BUTTONS ===== */
+.status-btn {
+    border: none;
+    font-weight: 600;
+    padding: 14px 0;
+    border-radius: var(--clay-radius);
+    font-size: 14px;
+    text-align: center;
+    flex: 1;
+    min-width: 60px;
+    min-height: 48px;
+    background: var(--clay-secondary);
+    color: var(--clay-text-light);
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: 0 2px 0 rgba(120, 80, 40, 0.06);
+    transition: all 0.15s ease;
+}
+.status-btn:hover {
+    background: var(--clay-secondary-deep);
+    transform: translateY(-1px);
+}
+.status-btn:active {
+    transform: translateY(1px);
+}
+.status-btn.active-hadir {
+    background: var(--clay-success);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+.status-btn.active-izin {
+    background: var(--clay-warning);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+}
+.status-btn.active-alpha {
+    background: var(--clay-danger);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}
+.status-btn.status-h { border: 2px solid rgba(22, 163, 74, 0.25); }
+.status-btn.status-i { border: 2px solid rgba(217, 119, 6, 0.25); }
+.status-btn.status-a { border: 2px solid rgba(220, 38, 38, 0.25); }
+
+.grade-btn {
+    padding: 10px 20px;
+    border-radius: var(--clay-radius);
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    background: var(--clay-secondary);
+    color: var(--clay-text);
+    cursor: pointer;
+    touch-action: manipulation;
+    min-height: 44px;
+    box-shadow: 0 2px 0 rgba(120, 80, 40, 0.06);
+    transition: all 0.15s ease;
+}
+.grade-btn:hover {
+    background: var(--clay-secondary-deep);
+    transform: translateY(-1px);
+}
+.grade-btn:active {
+    transform: translateY(1px);
+}
+.grade-btn.active {
+    background: var(--clay-primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(197, 106, 60, 0.4);
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    border-radius: var(--clay-radius);
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    flex: 1;
+    text-align: center;
+    min-height: 48px;
+    box-shadow: 0 2px 0 rgba(120, 80, 40, 0.06);
+    transition: all 0.15s ease;
+}
+.tab-btn.active {
+    background: var(--clay-primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(197, 106, 60, 0.4);
+}
+.tab-btn.inactive {
+    background: var(--clay-secondary);
+    color: var(--clay-text-light);
+}
+
+.day-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: var(--clay-radius-sm);
+    border: none;
+    cursor: pointer;
+    background: var(--clay-secondary);
+    color: var(--clay-text-light);
+    touch-action: manipulation;
+    min-height: 36px;
+    font-weight: 600;
+    font-size: 12px;
+    box-shadow: 0 2px 0 rgba(120, 80, 40, 0.04);
+    transition: all 0.15s ease;
+}
+.day-btn:hover {
+    background: var(--clay-secondary-deep);
+}
+.day-btn.active {
+    background: var(--clay-primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(197, 106, 60, 0.35);
+}
+#daySelector .day-btn:first-child,
+#daySelector .day-btn:last-child {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* ===== RESPONSIVE (tablet/desktop) ===== */
+@media (min-width: 768px) {
+    #dashboardScreen, #settingsScreen, #recapScreen {
+        max-width: 56rem;
+    }
+    #dashboardScreen .fixed, #settingsScreen .fixed, #recapScreen .fixed {
+        max-width: 56rem;
+    }
+    #teacherListContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    #teacherListContainer .card-teacher { margin-bottom: 0; }
+    #loginScreen h1 { font-size: 2.75rem; }
+    .status-btn { padding: 16px 0; }
+    #tabBar, #daySelector { max-width: 30rem; margin-left: auto; margin-right: auto; }
+    #gradeSelector, #statusLegend { max-width: 30rem; margin-left: auto; margin-right: auto; }
+    .day-btn { padding: 12px 0; }
+}
+
+/* ===== LEGENDA STATUS ===== */
+.status-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(0, 0, 0, 0.06);
+    flex: none;
+}
+.status-dot.dot-h { background: var(--clay-success); }
+.status-dot.dot-i { background: var(--clay-warning); }
+.status-dot.dot-a { background: var(--clay-danger); }
+
+/* ===== ERROR LOGIN ===== */
+#loginError {
+    color: var(--clay-danger);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 12px;
+}
+
+/* ===== RECAP ===== */
+.recap-table th,
+.recap-table td {
+    text-align: center;
+}
+.recap-table th:first-child,
+.recap-table td:first-child {
+    text-align: left;
+}
+#recapScreen .bg-white { background-color: #FFFFFF !important; }
+#recapScreen .border-\[\#E5E7EB\] { border-color: #E7D3B8 !important; }
+#recapScreen .text-\[\#111827\] { color: #111827 !important; }
+#recapScreen .text-\[\#64748B\] { color: #6B5D4F !important; }
+
+/* ===== SETTINGS ===== */
+.settings-table th,
+.settings-table td {
+    border-bottom: 1px solid #E7D3B8;
+    padding: 10px 12px;
+}
+.settings-table input {
+    border-radius: var(--clay-radius-sm);
+    border: 2px solid rgba(197, 106, 60, 0.18);
+    background: #FFFFFF;
+    box-shadow: var(--clay-shadow-1);
+    transition: all 0.2s ease;
+}
+.settings-table input:focus {
+    border-color: var(--clay-primary);
+    box-shadow: 0 0 0 3px rgba(197, 106, 60, 0.12);
+    outline: none;
+}
+
+/* ===== SAVE SUCCESS ===== */
+.save-success {
+    background: var(--clay-primary) !important;
+    box-shadow: 0 4px 14px rgba(197, 106, 60, 0.4);
+}
+.save-success span {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+/* ===== WA PICK ROW ===== */
+.wa-pick-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: none;
+    border-radius: var(--clay-radius);
+    background: #FBF3EB;
+    cursor: pointer;
+    box-shadow: var(--clay-shadow-1);
+    transition: all 0.15s ease;
+}
+.wa-pick-row:hover {
+    background: var(--clay-secondary);
+    transform: translateY(-1px);
+}
+.wa-pick-row input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--clay-primary);
+}
+.wa-pick-row .wa-num {
+    font-family: var(--clay-font-mono);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--clay-text);
+    letter-spacing: .02em;
+}
+
+/* ===== SESSION LABEL ===== */
+#teacherListContainer .grid.items-center.mb-1 > div:last-child {
+    font-size: 11px;
+    font-family: var(--clay-font-mono);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* ===== MODAL OVERLAY ===== */
+#modalKirimLaporan {
+    backdrop-filter: blur(6px);
+}
+
+/* ===== CLAY BUTTONS (from HTML inline styles) ===== */
+button[style*="box-shadow: 0 4px 14px rgba(197,106,60"] {
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+button[style*="box-shadow: 0 4px 14px rgba(197,106,60"]:hover {
+    filter: brightness(1.08);
+}
+button[style*="box-shadow: 0 4px 14px rgba(197,106,60"]:active {
+    transform: translateY(1px);
+}
