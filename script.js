@@ -622,7 +622,7 @@ function doLogin() {
     const gradeKey = loginMap[username];
     
     if (!gradeKey) {
-        err.textContent = 'Username tidak dikenali. Tersedia: ' + Object.keys(loginMap).join(', ');
+        err.textContent = 'Username tidak dikenali.';
         err.style.display = 'block';
         btn.disabled = false;
         input.value = '';
