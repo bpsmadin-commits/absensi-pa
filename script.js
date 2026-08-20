@@ -592,18 +592,11 @@ function doLogin() {
     btn.disabled = true;
     err.style.display = 'none';
     
-    if (username === 'admin') {
-        window.isAdmin = true;
-        userProfile = USERS['admin'];
-        openDashboard();
-        return;
-    }
-    
     const loginMap = getLoginMap();
     const gradeKey = loginMap[username];
     
     if (!gradeKey) {
-        err.textContent = 'Username tidak dikenali. Tersedia: ' + Object.keys(loginMap).join(', ') + ', admin';
+        err.textContent = 'Username tidak dikenali. Tersedia: ' + Object.keys(loginMap).join(', ');
         err.style.display = 'block';
         btn.disabled = false;
         input.value = '';
