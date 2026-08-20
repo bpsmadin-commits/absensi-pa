@@ -184,7 +184,14 @@ firebase.auth().onAuthStateChanged(user => {
     }
     render();
 });
-firebase.auth().signInAnonymously().catch(e => console.error('anon sign-in:', e));
+firebase.auth().signInAnonymously().catch(e => {
+    console.error('Anonymous sign-in gagal:', e.code, e);
+    const el = document.getElementById('loginError');
+    if (el) {
+        el.textContent = 'Login anonim gagal: ' + (e.code || e.message) + '. Aktifkan Anonymous di Authentication > Sign-in method.';
+        el.style.display = 'block';
+    }
+});
 
 function getDefaultUsernames() {
     return { '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', 'mtsd': 'mtsd' };
