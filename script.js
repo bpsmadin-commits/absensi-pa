@@ -181,6 +181,15 @@ firebase.auth().onAuthStateChanged(user => {
             localStorage.setItem('attendance_migrated', '1');
             setTimeout(migrateLegacyLocalStorage, 800);
         }
+    } else {
+        firebase.auth().signInAnonymously().catch(e => {
+            console.error('Anonymous sign-in gagal:', e.code, e);
+            const el = document.getElementById('loginError');
+            if (el) {
+                el.textContent = 'Login anonim gagal: ' + (e.code || e.message) + '. Aktifkan Anonymous di Authentication > Sign-in method.';
+                el.style.display = 'block';
+            }
+        });
     }
     render();
 });
