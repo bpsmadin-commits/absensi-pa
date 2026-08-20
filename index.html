@@ -30,7 +30,13 @@
             }
         };
     </script>
-    <link rel="manifest" href="data:application/json;base64,eyJ0aGVtZV9jb2xvciI6IiNDNTZBM0MiLCJuYW1lIjoiQWJzZW5zaSBHdXJ1IiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJzaG9ydF9uYW1lIjoiQWJzZW5zaSIsImJhY2tncm91bmRfY29sb3IiOiIjRkFGM0VBIiwic3RhcnRfdXJsIjoiLiIsImljb25zIjpbeyJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCIsInNpemVzIjoiMTkyeDE5MiIsInNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQXhNREFnTVRBd0lqNDhjbVZqZENCM2FXUjBhRDBpTVRBd0lpQm9aV2xuYUhROUlqRXdNQ0lnY25nOUlqSXdJaUJtYVd4c1BTSWpRelUyUVRORElpOCtQSFJsZUhRZ2VEMGlOVEFpSUhrOUlqWTRJaUJtYjI1MExYTnBlbVU5SWpZd0lpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJaUJtYVd4c1BTSjNhR2wwWlNJZ1ptOXVkQzFtWVcxcGJIazlJbk5oYm5NdGMyVnlhV1lpUGk4OEwzUmxlSFErUEM5emRtYysifSx7InR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiI1MTJ4NTEyIiwic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeE1EQWdNVEF3SWo0OGNtVmpkQ0IzYVdSMGFEMGlNVEF3SWlCb1pXbG5hSFE5SWpFd01DSWdjbmc5SWpJd0lpQm1hV3hzUFNJalF6VTJRVE5ESWk4K1BIUmxlSFFnZUQwaU5UQWlJSGs5SWpZNElpQm1iMjUwTFhOcGVtVTlJall3SWlCMFpYaDBMV0Z1WTJodmNqMGliV2xrWkd4bElpQm1hV3hzUFNKM2FHbDBaU0lnWm05dWRDMW1ZVzFwYkhrOUluTmhibk10YzJWeWFXWWlQaTg4TDNSbGVIUStQQzl6ZG1jKyJ9XX0=" />
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#C56A3C">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="font-['DM_Sans']">
@@ -214,5 +220,10 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="script.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
 </body>
 </html>
