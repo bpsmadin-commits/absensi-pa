@@ -1,4 +1,4 @@
-const CACHE = 'absensi-v1';
+const CACHE = 'absensi-v2';
 const ASSETS = [
     './',
     './index.html',
